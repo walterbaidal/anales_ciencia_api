@@ -161,6 +161,6 @@ Distributed under the MIT License.
 
 Walter Baidal - [@NatsukashiiNee](https://twitter.com/NatsukashiiNee) - walterbaidal96@gmail.com
 
-Project Link: [https://github.com/walterbaidal/k8s-app](https://github.com/walterbaidal/k8s-app)
+Project Link: [https://github.com/walterbaidal/anales_ciencia_api](https://github.com/walterbaidal/anales_ciencia_api)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
