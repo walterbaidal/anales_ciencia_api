@@ -67,10 +67,10 @@ This are some of the languages and tools used to build this project
 
 Para que el proyecto funcione se necesita tener instalado:
 
-* PHP8        : https://www.php.net/downloads (Se puede instalar con xampp https://www.apachefriends.org/es/index.html)
-* Composer    : https://www.geeksforgeeks.org/how-to-install-php-composer-on-windows/ (Elegir la ruta donde está el php.exe guardado del paso anterior)
-* Mysql       : https://dev.mysql.com/downloads/ (Instalarlo en el puerto 3306 (Puerto por defecto))
-* scoop       : https://tecnonucleous.com/2021/05/23/como-instalar-scoop-en-windows/ (Paquete para poder instalar symfony-cli)
+* PHP8        : [php](https://www.php.net/downloads) (Se puede instalar con xampp https://www.apachefriends.org/es/index.html)
+* Composer    : [Guía instalación composer](https://www.geeksforgeeks.org/how-to-install-php-composer-on-windows/) (Elegir la ruta donde está el php.exe guardado del paso anterior)
+* Mysql       : [mysql](https://dev.mysql.com/downloads/) (Instalarlo en el puerto 3306 (Puerto por defecto))
+* scoop       : [Guía instalaciçon scoop](https://tecnonucleous.com/2021/05/23/como-instalar-scoop-en-windows/) (Paquete para poder instalar symfony-cli)
 * symfony-cli : scoop install symfony-cli
 
 
@@ -87,8 +87,8 @@ _This project has been build in a Windows 10_
 
 2. Instalar dependencias
    ```sh
-   cd /anales_ciencia_api
-   composer install
+   cd /anales_ciencia_api && composer install
+    ```
  
    
 3. Crear base de datos
