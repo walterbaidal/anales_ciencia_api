@@ -80,23 +80,27 @@ Para que el proyecto funcione se necesita tener instalado:
 
 _This project has been build in a Windows 10_
 
-1. Clone the repo 
+1. Clonar el repositorio
    ```sh
    git clone https://github.com/walterbaidal/anales_ciencia_api.git
    ```
 
-2. Instalar dependencias
+2. Acceder al directorio e instalar las dependencias con composer
    ```sh
    cd /anales_ciencia_api && composer install
     ```
  
-   
 3. Crear base de datos
    ```sh
    ./bin/console doctrine:database:create
    ``` 
    
-4. Ejecutar el server
+4. Actualizar schema de la base de datos
+   ```sh
+   ./bin/console doctrine:schema:update --dump-sql --force
+   ``` 
+
+5. Ejecutar el server
    ```sh
    symfony server:start
    ``` 
