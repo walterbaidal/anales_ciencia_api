@@ -67,9 +67,9 @@ This are some of the languages and tools used to build this project
 
 Para que el proyecto funcione se necesita tener instalado:
 
-* PHP8        : [php](https://www.php.net/downloads) (Se puede instalar con xampp https://www.apachefriends.org/es/index.html)
+* PHP8        : [Instalar php](https://www.php.net/downloads) (Se puede instalar con xampp https://www.apachefriends.org/es/index.html)
 * Composer    : [Guía instalación composer](https://www.geeksforgeeks.org/how-to-install-php-composer-on-windows/) (Elegir la ruta donde está el php.exe guardado del paso anterior)
-* Mysql       : [mysql](https://dev.mysql.com/downloads/) (Instalarlo en el puerto 3306 (Puerto por defecto))
+* Mysql       : [Instalar mysql](https://dev.mysql.com/downloads/) (Instalarlo en el puerto 3306 (Puerto por defecto))
 * scoop       : [Guía instalaciçon scoop](https://tecnonucleous.com/2021/05/23/como-instalar-scoop-en-windows/) (Paquete para poder instalar symfony-cli)
 * symfony-cli : scoop install symfony-cli
 
