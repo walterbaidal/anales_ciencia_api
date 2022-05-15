@@ -115,12 +115,18 @@ Acceder a la ruta que nos proporciona el cli. Normalmente 127.0.0.1:8001/api (Se
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Work in progress 
+Este es un ejemplo de creación (POST) de un usuario (User)
+* Desplegamos endpoint POST api/user
+* Clickeamos en Try it out
+* Rellenamos los datos
+* Clickeamos en Execute
+
+![image](https://user-images.githubusercontent.com/9332710/168494551-aa9a311d-ffc5-4e2e-8328-49b6a5f5f5e3.png)
+
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- CONTRIBUTING -->
