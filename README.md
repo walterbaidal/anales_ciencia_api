@@ -67,13 +67,8 @@ This are some of the languages and tools used to build this project
 
 Para que el proyecto funcione se necesita tener instalado:
 
-* PHP8        : [Instalar php](https://www.php.net/downloads) (Se puede instalar con xampp https://www.apachefriends.org/es/index.html)
-* Composer    : [Guía instalación composer](https://www.geeksforgeeks.org/how-to-install-php-composer-on-windows/) (Elegir la ruta donde está el php.exe guardado del paso anterior)
-* Mysql       : [Instalar mysql](https://dev.mysql.com/downloads/) (Instalarlo en el puerto 3306 (Puerto por defecto))
-* scoop       : [Guía instalaciçon scoop](https://tecnonucleous.com/2021/05/23/como-instalar-scoop-en-windows/) (Paquete para poder instalar symfony-cli)
-* symfony-cli : scoop install symfony-cli
-
-
+* Git           : [Git Bash para Windows](https://git-scm.com/download/win)
+* Docker        : [IDocker Dekstop en Windows](https://docs.docker.com/desktop/windows/install/) Comprobar que se incluya docker-compose
 
 
 ### Installation
@@ -85,27 +80,27 @@ _This project has been build in a Windows 10_
    git clone https://github.com/walterbaidal/anales_ciencia_api.git
    ```
 
-2. Acceder al directorio e instalar las dependencias con composer
+2. Acceder al directorio y provisionar los servicios
    ```sh
-   cd /anales_ciencia_api && composer install
+   cd /anales_ciencia_api && docker-compose up -d --build
     ```
  
-3. Crear base de datos
+3. Acceder al contenedor de PHP
    ```sh
-   ./bin/console doctrine:database:create
+   docker exec -it php /bin/bash
    ``` 
    
-4. Actualizar schema de la base de datos
+4. Instalar las dependencias
+   ```sh
+   composer install
+   ``` 
+
+5. Actualizar schema de la base de dato
    ```sh
    ./bin/console doctrine:schema:update --dump-sql --force
    ``` 
-
-5. Ejecutar el server
-   ```sh
-   symfony server:start
-   ``` 
    
-Acceder a la ruta que nos proporciona el cli. Normalmente 127.0.0.1:8001/api (Sea cual sea la direccion, entrar en /api)
+Acceder en tu navegador favorito: http://localhost:8080/api
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
