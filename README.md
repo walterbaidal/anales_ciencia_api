@@ -80,23 +80,27 @@ Para que el proyecto funcione se necesita tener instalado:
 
 _This project has been build in a Windows 10_
 
-1. Clone the repo 
+1. Clonar el repositorio
    ```sh
    git clone https://github.com/walterbaidal/anales_ciencia_api.git
    ```
 
-2. Instalar dependencias
+2. Acceder al directorio e instalar las dependencias con composer
    ```sh
    cd /anales_ciencia_api && composer install
     ```
  
-   
 3. Crear base de datos
    ```sh
    ./bin/console doctrine:database:create
    ``` 
    
-4. Ejecutar el server
+4. Actualizar schema de la base de datos
+   ```sh
+   ./bin/console doctrine:schema:update --dump-sql --force
+   ``` 
+
+5. Ejecutar el server
    ```sh
    symfony server:start
    ``` 
@@ -111,12 +115,18 @@ Acceder a la ruta que nos proporciona el cli. Normalmente 127.0.0.1:8001/api (Se
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Work in progress 
+Este es un ejemplo de creación (POST) de un usuario (User)
+* Desplegamos endpoint POST api/user
+* Clickeamos en Try it out
+* Rellenamos los datos
+* Clickeamos en Execute
+
+![image](https://user-images.githubusercontent.com/9332710/168494551-aa9a311d-ffc5-4e2e-8328-49b6a5f5f5e3.png)
+
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 <!-- CONTRIBUTING -->
@@ -151,6 +161,6 @@ Distributed under the MIT License.
 
 Walter Baidal - [@NatsukashiiNee](https://twitter.com/NatsukashiiNee) - walterbaidal96@gmail.com
 
-Project Link: [https://github.com/walterbaidal/k8s-app](https://github.com/walterbaidal/k8s-app)
+Project Link: [https://github.com/walterbaidal/anales_ciencia_api](https://github.com/walterbaidal/anales_ciencia_api)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
