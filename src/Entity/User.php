@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -18,10 +19,12 @@ class User
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[ApiProperty(identifier: false)]
     private $id;
 
     #[NotBlank]
     #[ORM\Column(type: 'string', length: 32)]
+    #[ApiProperty(identifier: true)]
     private $username;
 
     #[ORM\Column(type: 'string', length: 60)]
@@ -72,7 +75,7 @@ class User
 
     public function setPassword(string $password): self
     {
-        $this->password = strval(password_hash($password, PASSWORD_DEFAULT));
+        $this->password = $password; //strval(password_hash($password, PASSWORD_DEFAULT));
 
         return $this;
     }
