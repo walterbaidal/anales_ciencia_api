@@ -12,9 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
-#[ApiResource(
-    normalizationContext: ['groups' => ['product:read']]
-)]
+#[ApiResource()]
 #[UniqueEntity(fields: ["name"])]
 class Product
 {
