@@ -9,38 +9,58 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Context;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    denormalizationContext: [
+        'groups' => ['product:input'],
+    ],
+    normalizationContext: [
+        'groups' => ['product:output'],
+    ],
+)]
 #[UniqueEntity(fields: ["name"])]
 class Product
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(["product:output", "product:input", "person:output", "entity:output"])]
     private $id;
 
     #[NotBlank]
     #[ORM\Column(type: 'string', length: 80)]
+    #[Groups(["product:output", "product:input", "person:output", "entity:output"])]
     private $name;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
+    #[Groups(["product:output", "product:input"])]
+    #[Context([DateTimeNormalizer::FORMAT_KEY => 'd-m-Y'])]
     private $birthDate;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
+    #[Groups(["product:output", "product:input"])]
+    #[Context([DateTimeNormalizer::FORMAT_KEY => 'd-m-Y'])]
     private $deathDate;
 
     #[ORM\Column(type: 'string', length: 2047, nullable: true)]
+    #[Groups(["product:output", "product:input", "person:output", "entity:output"])]
     private $imageUrl;
 
     #[ORM\Column(type: 'string', length: 2047, nullable: true)]
+    #[Groups(["product:output", "product:input"])]
     private $wikiUrl;
 
     #[ORM\ManyToMany(targetEntity: Entity::class, inversedBy: 'products')]
+    #[Groups(["product:output", "product:input"])]
     private $entities;
 
     #[ORM\ManyToMany(targetEntity: Person::class, inversedBy: 'products')]
+    #[Groups(["product:output", "product:input"])]
     private $persons;
 
     public function __construct()

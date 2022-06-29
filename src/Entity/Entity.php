@@ -8,38 +8,58 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Context;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[ORM\Entity(repositoryClass: EntityRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    denormalizationContext: [
+        'groups' => ['entity:input'],
+    ],
+    normalizationContext: [
+        'groups' => ['entity:output'],
+    ],
+)]
 #[UniqueEntity(fields: ["name"])]
 class Entity
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(["entity:output", "entity:input", "product:output", "person:output"])]
     private $id;
 
     #[NotBlank]
     #[ORM\Column(type: 'string', length: 80)]
+    #[Groups(["entity:output", "entity:input", "product:output", "person:output"])]
     private $name;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
+    #[Context([DateTimeNormalizer::FORMAT_KEY => 'd-m-Y'])]
+    #[Groups(["entity:output", "entity:input"])]
     private $birthDate;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
+    #[Context([DateTimeNormalizer::FORMAT_KEY => 'd-m-Y'])]
+    #[Groups(["entity:output", "entity:input"])]
     private $deathDate;
 
     #[ORM\Column(type: 'string', length: 2047, nullable: true)]
+    #[Groups(["entity:output", "entity:input", "product:output", "person:output"])]
     private $imageUrl;
 
     #[ORM\Column(type: 'string', length: 2047, nullable: true)]
+    #[Groups(["entity:output", "entity:input"])]
     private $wikiUrl;
 
     #[ORM\ManyToMany(targetEntity: Product::class, mappedBy: 'entities')]
+    #[Groups(["entity:output", "entity:input"])]
     private $products;
 
     #[ORM\OneToMany(mappedBy: 'entity', targetEntity: Person::class)]
+    #[Groups(["entity:output", "entity:input"])]
     private $persons;
 
     public function __construct()
