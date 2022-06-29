@@ -86,9 +86,9 @@ class Product
         return $this;
     }
 
-    public function getBirthDate(?\DateTimeInterface $birthDate): string
+    public function getBirthDate(): ?\DateTimeInterface
     {
-        return Carbon::instance($this->birthDate)->format("d-m-Y");
+        return $this->birthDate;
     }
     public function setBirthDate(?\DateTimeInterface $birthDate): self
     {

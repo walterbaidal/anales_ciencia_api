@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use App\Controller\GetByUsernameAction;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -11,20 +14,31 @@ use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    itemOperations: [
+        'get',
+        'get_by_username' => [
+            'method' => 'GET',
+            'controller' => GetByUsernameAction::class,
+            'path' => '/users/{username}'
+        ],
+        'put',
+        'delete',
+        'patch'
+    ]
+)]
 #[UniqueEntity(fields: ["username"])]
 #[UniqueEntity(fields: ["email"])]
+#[ApiFilter(SearchFilter::class, properties: ['username' => "exact"])]
 class User
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[ApiProperty(identifier: false)]
     private $id;
 
     #[NotBlank]
     #[ORM\Column(type: 'string', length: 32)]
-    #[ApiProperty(identifier: true)]
     private $username;
 
     #[ORM\Column(type: 'string', length: 60)]
