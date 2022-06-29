@@ -28,12 +28,12 @@ class Person
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["product:output", "person:output", "person:input", "entity:output"])]
+    #[Groups(["person:output", "person:input", "product:output", "entity:output"])]
     private $id;
 
     #[NotBlank]
     #[ORM\Column(type: 'string', length: 80)]
-    #[Groups(["product:output", "person:output", "person:input", "entity:output"])]
+    #[Groups(["person:output", "person:input", "product:output", "entity:output"])]
     private $name;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
@@ -47,7 +47,7 @@ class Person
     private $deathDate;
 
     #[ORM\Column(type: 'string', length: 2047, nullable: true)]
-    #[Groups(["product:output", "person:output", "person:input", "entity:output"])]
+    #[Groups(["person:output", "person:input", "product:output", "entity:output"])]
     private $imageUrl;
 
     #[ORM\Column(type: 'string', length: 2047, nullable: true)]
