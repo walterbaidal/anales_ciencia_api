@@ -42,7 +42,6 @@ class User
     private $username;
 
     #[ORM\Column(type: 'string', length: 60)]
-    #[NotBlank]
     #[Email]
     private $email;
 
@@ -52,6 +51,9 @@ class User
 
     #[ORM\Column(type: 'integer')]
     private $role;
+
+    #[ORM\Column(type: 'date_immutable', nullable: true)]
+    private $birthday;
 
     public function getId(): ?int
     {
@@ -107,6 +109,18 @@ class User
     public function setRole(int $role): self
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    public function getBirthday(): ?\DateTimeImmutable
+    {
+        return $this->birthday;
+    }
+
+    public function setBirthday(?\DateTimeImmutable $birthday): self
+    {
+        $this->birthday = $birthday;
 
         return $this;
     }
