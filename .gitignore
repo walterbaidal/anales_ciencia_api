@@ -9,4 +9,6 @@
 /.idea
 /mysql/
 /public/bundles/
+/bin/
+*.lock
 ###< symfony/framework-bundle ###
