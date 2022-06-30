@@ -10,6 +10,8 @@ use App\Controller\GetByUsernameAction;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Context;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -41,7 +43,7 @@ class User
     #[ORM\Column(type: 'string', length: 32)]
     private $username;
 
-    #[ORM\Column(type: 'string', length: 60)]
+    #[ORM\Column(type: 'string', length: 60, nullable: true)]
     #[Email]
     private $email;
 
@@ -52,8 +54,12 @@ class User
     #[ORM\Column(type: 'integer')]
     private $role;
 
-    #[ORM\Column(type: 'date_immutable', nullable: true)]
+    #[Context([DateTimeNormalizer::FORMAT_KEY => 'd-m-Y'])]
+    #[ORM\Column(type: 'datetime', nullable: true)]
     private $birthday;
+
+    #[ORM\Column(type: 'text', nullable: true)]
+    private $imageUrl;
 
     public function getId(): ?int
     {
@@ -113,14 +119,26 @@ class User
         return $this;
     }
 
-    public function getBirthday(): ?\DateTimeImmutable
+    public function getBirthday(): ?\DateTimeInterface
     {
         return $this->birthday;
     }
 
-    public function setBirthday(?\DateTimeImmutable $birthday): self
+    public function setBirthday(?\DateTimeInterface $birthday): self
     {
         $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    public function getImageUrl(): ?string
+    {
+        return $this->imageUrl;
+    }
+
+    public function setImageUrl(?string $imageUrl): self
+    {
+        $this->imageUrl = $imageUrl;
 
         return $this;
     }
