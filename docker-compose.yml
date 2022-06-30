@@ -32,6 +32,18 @@ services:
     volumes:
       - .:/var/www/anales_ciencia_api
       - ./Docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    
+
+  api:
+    container_name: api
+    build:
+      context: ./../anales_ciencia_frontend
+      target: development
+    volumes:
+      - ./../anales_ciencia_frontend/src:/app/src
+    ports:
+      - 3000:3000
     depends_on:
       - php
       - database
+      - nginx
