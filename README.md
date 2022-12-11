@@ -6,7 +6,7 @@
 <br />
 <div align="center">
   <a href="">
-    <img src="https://key0.cc/images/preview/27177_e37c477ada017fd7cc4ecc3ac315a21a.png" alt="Logo" width="80" height="80">
+    <img src="https://assets.stickpng.com/images/589c80bb64b351149f22a81e.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Anales de la Ciencia API</h3>
