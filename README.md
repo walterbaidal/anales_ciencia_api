@@ -1,5 +1,4 @@
 # anales_ciencia_api
-# MUFFIN
 
 <div id="top"></div>
 
